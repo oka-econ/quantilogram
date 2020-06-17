@@ -1,72 +1,86 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-Introduction
-------------
 
-The quantilogram package contains tools for estimation and inference methods using cross-quantilogram. The cross-quantilogram is a measure of nonlinear dependence between two variables, based on either unconditional or conditional quantile functions. The cross-quantilogram can be considered as an extension of the correlogram, which is a correlation function over multiple lag periods and mainly focuses on linear dependency.
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
-One can use the cross-quantilogram to detect the presence of directional predictability from one time series to another. This package provides a statistical inference method based on the stationary bootstrap.
 
-Getting Started
----------------
+## Introduction
+
+The quantilogram package contains tools for estimation and inference methods using cross-quantilogram. The cross-quantilogram is a measure of nonlinear dependence between two variables, based on either unconditional or conditional quantile functions.  The cross-quantilogram can be considered as an extension of the correlogram, which is a correlation function over multiple lag periods and mainly focuses on linear dependency.  
+
+One can use the cross-quantilogram to detect the presence of directional predictability from one time series to another.  This package provides a statistical inference method based on the stationary bootstrap.
+
+
+## Getting Started
 
 The works are extensively discussed in:
 
--   Univariate time series: Linton and Whang (2007)
--   Multivariate time series: Han, Linton, Oka and Whang (2016)
+* Univariate time series: Linton and Whang (2007)
+* Multivariate time series: Han, Linton, Oka and Whang (2016)
 
-Installation
-------------
+
+## Installation
 
 You can install the released version of quantilogram from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("quantilogram")
 ```
-
 or the latest version from github with:
 
-``` r
+```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("oka-econ/quantilogram")
 ```
 
-Example
--------
+## Example
 
 ### Case Study 1: Stock return predictability
 
-This example is to show
+This example is to show 
 
 A subset of the data is available in the package and it can be loaded by
 
-``` r
+```{r}
 library(quantilogram)
 data(stock)
 ```
 
 The dataset contains monthly excess stock returns and stock varaince, which are included in the data set analyzed in Goyal and Welch (2008). Stock returns are measured by the S&P 500 index and include dividens. A treasury-bill rate is subtracted from stock returns to give excess stock returns. The stock variance is a volatility estimate based on daily squared returns and is treated as an estimate of equity risk in the literature. The sample period is from Feburary 1885 to December 2005 with sample size 1,451.
 
--   **Date**: Year-Month-Day
+* **Date**: Year-Month-Day
 
--   **Return**: excess stock returns
+* **Return**: excess stock returns
 
--   **Variance**: stock variance
+* **Variance**: stock variance
+
 
 ### Case study 2: Systematic risk
 
 The data set contains the daily CRSP market value weighted index returns, which are used as the market index returns in Brownless and Engle (2012), and also includes daily stock returns on JP Morgan Chase (JPM), Goldman Sachs (GS) and American International Group (AIG). The sample period is from 2 Jan. 2001 to 30 Dec. 2011 with sample size 2,767.
 
--   **date**: The time index (day)
+* **date**: The time index (day)
 
--   **Market**: The daily CRSP market value weighted incex returns
+* **Market**: The daily CRSP market value weighted incex returns
 
--   **JPM**: stock returns on JP Morgan Chase (JPM)
+* **JPM**: stock returns on JP Morgan Chase (JPM)
 
--   **GS**: stock returns on Goldman Sachs (GS)
+* **GS**: stock returns on Goldman Sachs (GS)
 
--   **AIG**: stock returns on American International Group (AIG)
+* **AIG**: stock returns on American International Group (AIG)
 
-``` r
+
+```{r}
 data(sys.risk)
 ```
+
