@@ -1,6 +1,6 @@
 Package: quantilogram
 Title: Cross-Quantilogram
-Version: 2.0.1
+Version: 2.1.1
 Authors@R: 
     c(person(given = "Tatsushi",
              family = "Oka",
