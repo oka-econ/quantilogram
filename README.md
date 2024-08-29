@@ -1,72 +1,54 @@
+# Cross-Quantilogram
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-Introduction
-------------
+## Description
 
-The quantilogram package contains tools for estimation and inference methods using cross-quantilogram. The cross-quantilogram is a measure of nonlinear dependence between two variables, based on either unconditional or conditional quantile functions. The cross-quantilogram can be considered as an extension of the correlogram, which is a correlation function over multiple lag periods and mainly focuses on linear dependency.
+The `quantilogram` package provides estimation and inference methods for the cross-quantilogram. The cross-quantilogram is a measure of nonlinear dependence between two variables, based on either unconditional or conditional quantile functions. It can be considered an extension of the correlogram, which is a correlation function over multiple lag periods that mainly focuses on linear dependency.
 
-One can use the cross-quantilogram to detect the presence of directional predictability from one time series to another. This package provides a statistical inference method based on the stationary bootstrap.
+This package allows users to detect the presence of directional predictability from one time series to another and provides a statistical inference method based on the stationary bootstrap.
 
-Getting Started
----------------
-
-The works are extensively discussed in:
-
--   Univariate time series: Linton and Whang (2007)
--   Multivariate time series: Han, Linton, Oka and Whang (2016)
-
-Installation
-------------
+## Installation
 
 You can install the released version of quantilogram from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
+  
+  ```R
 install.packages("quantilogram")
 ```
 
-or the latest version from github with:
+## Usage
 
-``` r
-# install.packages("devtools")
-devtools::install_github("oka-econ/quantilogram")
-```
+Here's a basic example of how to use the quantilogram package:
 
-Example
--------
-
-### Case Study 1: Stock return predictability
-
-This example is to show
-
-A subset of the data is available in the package and it can be loaded by
-
-``` r
+```R
 library(quantilogram)
-data(stock)
+
+# Load example data
+data("sys.risk")
+
+# Select two variables
+D = sys.risk[, c("JPM", "Market")]
+
+# Set parameters
+k = 1                             # lag order 
+vec.q = seq(0.05, 0.95, 0.05)     # a list of quantiles 
+B.size = 200                      # Repetition of bootstrap  
+
+# Compute and plot cross-quantilogram
+res = heatmap.crossq(D, k, vec.q, B.size) 
+
+# Display the plot
+print(res$plot)
 ```
 
-The dataset contains monthly excess stock returns and stock varaince, which are included in the data set analyzed in Goyal and Welch (2008). Stock returns are measured by the S&P 500 index and include dividens. A treasury-bill rate is subtracted from stock returns to give excess stock returns. The stock variance is a volatility estimate based on daily squared returns and is treated as an estimate of equity risk in the literature. The sample period is from Feburary 1885 to December 2005 with sample size 1,451.
+For more detailed examples and function descriptions, please refer to the package documentation.
 
--   **Date**: Year-Month-Day
+## References
 
--   **Return**: excess stock returns
+The methods implemented in this package are based on the following key publications:
 
--   **Variance**: stock variance
+1. Linton, O., and Whang, Y. J. (2007). The quantilogram: With an application to evaluating directional predictability. Journal of Econometrics, 141(1), 250-282. [doi:10.1016/j.jeconom.2007.01.004](https://doi.org/10.1016/j.jeconom.2007.01.004)
 
-### Case study 2: Systematic risk
+2. Han, H., Linton, O., Oka, T., and Whang, Y. J. (2016). The cross-quantilogram: Measuring quantile dependence and testing directional predictability between time series. Journal of Econometrics, 193(1), 251-270. [doi:10.1016/j.jeconom.2016.03.001](https://doi.org/10.1016/j.jeconom.2016.03.001)
 
-The data set contains the daily CRSP market value weighted index returns, which are used as the market index returns in Brownless and Engle (2012), and also includes daily stock returns on JP Morgan Chase (JPM), Goldman Sachs (GS) and American International Group (AIG). The sample period is from 2 Jan. 2001 to 30 Dec. 2011 with sample size 2,767.
+## License
 
--   **date**: The time index (day)
-
--   **Market**: The daily CRSP market value weighted incex returns
-
--   **JPM**: stock returns on JP Morgan Chase (JPM)
-
--   **GS**: stock returns on Goldman Sachs (GS)
-
--   **AIG**: stock returns on American International Group (AIG)
-
-``` r
-data(sys.risk)
-```
+This package is free and open source software, licensed under GPL (>= 3).
