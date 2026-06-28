@@ -1,6 +1,6 @@
 Package: quantilogram
 Title: Cross-Quantilogram
-Version: 3.1.1
+Version: 3.2.1
 Authors@R: c(
     person("Tatsushi", "Oka", , "oka.econ@gmail.com", role = c("aut", "cre")),
     person("Heejon", "Han", role = "ctb"),
@@ -30,10 +30,10 @@ Description: Estimation and inference methods for the cross-quantilogram.
     <doi:10.1016/j.jeconom.2016.03.001>.
 License: GPL (>= 3)
 Depends: 
-    R (>= 3.5.0)
+    R (>= 4.1.0)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 8.0.0
 Imports: 
     ggplot2,
     np,
